@@ -57,6 +57,14 @@ public class Coord implements Comparable<Coord>{
 		
 		return ret;
 	}
+	
+	public boolean equals(Coord o) {
+		if(this.getLigne() == o.getLigne() && this.getColonne() == o.getColonne()) {
+			return true;
+		}
+		return false;
+	}
+
 
 
 	/* (non-Javadoc)
