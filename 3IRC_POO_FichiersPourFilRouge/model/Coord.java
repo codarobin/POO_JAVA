@@ -58,14 +58,30 @@ public class Coord implements Comparable<Coord>{
 		return ret;
 	}
 	
-	public boolean equals(Coord o) {
-		if(this.getLigne() == o.getLigne() && this.getColonne() == o.getColonne()) {
-			return true;
-		}
-		return false;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + colonne;
+		result = prime * result + ligne;
+		return result;
 	}
 
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Coord other = (Coord) obj;
+		if (colonne != other.colonne)
+			return false;
+		if (ligne != other.ligne)
+			return false;
+		return true;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
