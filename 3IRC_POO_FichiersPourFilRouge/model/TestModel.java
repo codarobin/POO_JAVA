@@ -44,10 +44,10 @@ public class TestModel {
 		PieceModel pieceModel2 = new PawnModel(new Coord('b', 4), PieceSquareColor.WHITE);
 		PieceModel pieceModel3 = new PawnModel(new Coord('e', 7), PieceSquareColor.BLACK);
 		System.out.println("pieceModel1 = " + pieceModel1);	// [B[7,a]]
-//							pieceModel1.move(new Coord('b', 6));
-//		System.out.println("pieceModel1 = " + pieceModel1);	// [B[6,b]]
-//		System.out.println("isMoveOk ('b',4) --> ('c',5) = " 
-//							+ pieceModel2.isMoveOk(new Coord('c',5),false)); // true : depl. de 1 case sans prise
+							pieceModel1.move(new Coord('b', 6));
+		System.out.println("pieceModel1 = " + pieceModel1);	// [B[6,b]]
+		System.out.println("isMoveOk ('b',4) --> ('c',5) = " 
+							+ pieceModel2.isMoveOk(new Coord('c',5),false)); // true : depl. de 1 case sans prise
 //		System.out.println("isMoveOk ('e',7) --> ('d',6) = " 
 //							+ pieceModel3.isMoveOk(new Coord('d',6),false)); // true : depl. de 1 case sans prise
 //							pieceModel2.move(new Coord('c', 5));
