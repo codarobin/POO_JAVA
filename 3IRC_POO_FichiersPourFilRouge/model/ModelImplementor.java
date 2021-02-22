@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -9,18 +8,19 @@ import nutsAndBolts.PieceSquareColor;
 /**
  * @author francoise.perrin
  * 
- * Cete classe fabrique et stocke toutes les PieceModel du Model dans une collection 
- * elle est donc responsable de rechercher et mettre à jour les PieceModel (leur position)
- * En réalité, elle délègue à une fabrique le soin de fabriquer les bonnes PieceModel 
- * avec les bonnes coordonnées
+ *         Cete classe fabrique et stocke toutes les PieceModel du Model dans
+ *         une collection elle est donc responsable de rechercher et mettre à
+ *         jour les PieceModel (leur position) En réalité, elle délègue à une
+ *         fabrique le soin de fabriquer les bonnes PieceModel avec les bonnes
+ *         coordonnées
  * 
- * En revanche, elle n'est pas responsable des algorithme métiers liés au déplacement des pièces
- * (responsabilité de la classe Model)
+ *         En revanche, elle n'est pas responsable des algorithme métiers liés
+ *         au déplacement des pièces (responsabilité de la classe Model)
  */
 public class ModelImplementor {
 
 	// la collection de pièces en jeu - mélange noires et blanches
-	private Collection<PieceModel> pieces ;	
+	private Collection<PieceModel> pieces;
 
 	public ModelImplementor() {
 		super();
@@ -30,17 +30,21 @@ public class ModelImplementor {
 
 	public PieceSquareColor getPieceColor(Coord coord) {
 		PieceSquareColor color = null;
+		if (findPiece(coord) != null) {
+			color = findPiece(coord).getPieceColor();
+		}
 
-		// TODO Atelier 1
-		
 		return color;
 	}
 
 	public boolean isPiecehere(Coord coord) {
 		boolean isPiecehere = false;
 
-		// TODO Atelier 1
-		
+		if (findPiece(coord) != null) {
+			isPiecehere = true;
+		}
+
+
 		return isPiecehere;
 	}
 
@@ -48,61 +52,67 @@ public class ModelImplementor {
 
 		boolean isMovePieceOk = false;
 
-		// TODO Atelier 1
+			if (isPiecehere(initCoord) == true) {
+				PieceModel piece = findPiece(initCoord);
+				isMovePieceOk = piece.isMoveOk(targetCoord, isPieceToTake);
+			} 
 		
+
 		return isMovePieceOk;
 	}
-
 
 	public boolean movePiece(Coord initCoord, Coord targetCoord) {
 
 		boolean isMovePieceDone = false;
 
-		// TODO Atelier 1
-		
+		if (findPiece(initCoord) != null) {
+			PieceModel piece = findPiece(initCoord);
+			piece.move(targetCoord);
+			isMovePieceDone = true;
+		}
+
 		return isMovePieceDone;
 	}
 
 	public void removePiece(Coord pieceToTakeCoord) {
 
 		// TODO Atelier 2
-		
+
 	}
 
-	
 	public List<Coord> getCoordsOnItinerary(Coord initCoord, Coord targetCoord) {
 		List<Coord> coordsOnItinerary = null;
-		
+
 		// TODO Atelier 2
-		
+
 		return coordsOnItinerary;
 	}
 
-	
 	/**
 	 * @param coord
 	 * @return la pièce qui se trouve aux coordonnées indiquées
 	 */
-	 PieceModel findPiece(Coord coord) {		// TODO : mettre en "private" après test unitaires
-		 
-		PieceModel findPiece = null;
+	PieceModel findPiece(Coord coord) { // TODO : mettre en "private" après test unitaires
 
-		// TODO Atelier 1
-		
+		PieceModel findPiece = null;
+		for (PieceModel pieceModel : pieces) {
+			if (pieceModel.hasThisCoord(coord)) {
+				findPiece = pieceModel;
+			}
+		}
 		return findPiece;
 	}
 
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 * 
-	 * La méthode toStrong() retourne une représentation 
-	 * de la liste de pièces sous forme d'un tableau 2D
+	 * La méthode toStrong() retourne une représentation de la liste de pièces sous
+	 * forme d'un tableau 2D
 	 * 
 	 */
 	public String toString() {
-
 
 		String st = "";
 		String[][] damier = new String[ModelConfig.LENGTH][ModelConfig.LENGTH];
@@ -120,21 +130,20 @@ public class ModelImplementor {
 
 		// Affichage du tableau formatté
 		st = "     a      b      c      d      e      f      g      h      i      j\n";
-		for ( int lig = 9; lig >=0 ; lig--) {
-			st += (lig+1) + "  ";
-			for ( int col = 0; col <= 9; col++) {					 
-				String stColor = damier[lig][col];				
-				if (stColor != null) {						
-					st += stColor + "  ";	
-				} 
-				else {
+		for (int lig = 9; lig >= 0; lig--) {
+			st += (lig + 1) + "  ";
+			for (int col = 0; col <= 9; col++) {
+				String stColor = damier[lig][col];
+				if (stColor != null) {
+					st += stColor + "  ";
+				} else {
 					st += "-----  ";
 				}
 			}
-			st +="\n";
+			st += "\n";
 		}
-		
-		return "\nDamier du model \n" + st;	
+
+		return "\nDamier du model \n" + st;
 	}
 
 }

@@ -75,8 +75,17 @@ public class PawnModel implements PieceModel {
 					ret = true;
 				}
 			}
+		} else {
+			if (Math.abs(targetCoord.getColonne() - getColonne()) == 2
+					&& Math.abs(targetCoord.getLigne() - getLigne()) == 2) {
+				if (Math.signum(targetCoord.getLigne() - getLigne()) == 1 && pieceColor == PieceSquareColor.WHITE) {
+					ret = true;
+				} else if (Math.signum(targetCoord.getLigne() - getLigne()) == -1
+						&& pieceColor == PieceSquareColor.BLACK) {
+					ret = true;
+				}
+			}
 		}
-
 		return ret;
 	}
 
