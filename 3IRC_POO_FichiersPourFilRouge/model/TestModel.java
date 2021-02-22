@@ -22,15 +22,15 @@ public class TestModel {
 		System.out.println("Test classe Coord");
 		Coord c1 = new Coord('a', 7);
 		Coord c2 = new Coord('b', 3);
-		System.out.println("MAX = " + Coord.MAX); // MAX = 10
-		System.out.println("c1 = " + c1);	// c1 = [7,a]
-		System.out.println("c2 = " + c2);	// c2 = [3,b]
+//		System.out.println("MAX = " + Coord.MAX); // MAX = 10
+//		System.out.println("c1 = " + c1);	// c1 = [7,a]
+//		System.out.println("c2 = " + c2);	// c2 = [3,b]
 
-		System.out.println("coord valides ('a',7) ? "+ Coord.coordonnees_valides(c1));		//true
-		System.out.println("coord valides ('w',9) ? "+ Coord.coordonnees_valides(new Coord('w',9)));	//false
-		System.out.println("coord valides ('b',11) ? "+ Coord.coordonnees_valides(new Coord('b',11) ));	//false
-		System.out.println("c1.equals(c2) ? "+ c1.equals(c2));	// false
-		System.out.println("c1.equals(new Coord('a', 7)) ? "+ c1.equals(new Coord('a', 7)));	// true
+//		System.out.println("coord valides ('a',7) ? "+ Coord.coordonnees_valides(c1));		//true
+//		System.out.println("coord valides ('w',9) ? "+ Coord.coordonnees_valides(new Coord('w',9)));	//false
+//		System.out.println("coord valides ('b',11) ? "+ Coord.coordonnees_valides(new Coord('b',11) ));	//false
+//		System.out.println("c1.equals(c2) ? "+ c1.equals(c2));	// false
+//		System.out.println("c1.equals(new Coord('a', 7)) ? "+ c1.equals(new Coord('a', 7)));	// true
 //		System.out.println("c1.compareTo(c2) ? "+ c1.compareTo(c2) );	// nb négatif car c1 < c2
 //		System.out.println("c1.compareTo(new Coord('a', 7)) ? "+ c1.compareTo(new Coord('a', 7)) );	// 0 car coords égales
 //
@@ -39,11 +39,11 @@ public class TestModel {
 //		// Test classe PawnModel
 //		//////////////////////////////////
 //
-//		System.out.println("\nTest classe PawnModel");
-//		PieceModel pieceModel1 = new PawnModel(new Coord('a', 7), PieceSquareColor.BLACK);
-//		PieceModel pieceModel2 = new PawnModel(new Coord('b', 4), PieceSquareColor.WHITE);
-//		PieceModel pieceModel3 = new PawnModel(new Coord('e', 7), PieceSquareColor.BLACK);
-//		System.out.println("pieceModel1 = " + pieceModel1);	// [B[7,a]]
+		System.out.println("\nTest classe PawnModel");
+		PieceModel pieceModel1 = new PawnModel(new Coord('a', 7), PieceSquareColor.BLACK);
+		PieceModel pieceModel2 = new PawnModel(new Coord('b', 4), PieceSquareColor.WHITE);
+		PieceModel pieceModel3 = new PawnModel(new Coord('e', 7), PieceSquareColor.BLACK);
+		System.out.println("pieceModel1 = " + pieceModel1);	// [B[7,a]]
 //							pieceModel1.move(new Coord('b', 6));
 //		System.out.println("pieceModel1 = " + pieceModel1);	// [B[6,b]]
 //		System.out.println("isMoveOk ('b',4) --> ('c',5) = " 

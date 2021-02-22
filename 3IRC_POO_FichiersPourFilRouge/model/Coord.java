@@ -94,11 +94,16 @@ public class Coord implements Comparable<Coord>{
 	 */
 	@Override
 	public int compareTo(Coord o) {
-		int ret = 999;
+		if (o.getColonne() == this.getColonne() && o.getLigne() == this.getLigne()) {
+			return 0;
+		} else if (this.getColonne() > o.getColonne()) {
+			return 1;
+		} else if (this.getColonne() == o.getColonne() && this.getLigne()  > o.getLigne()) {
+			return 1;
+		} else {
+			return -1; 
+		}
 		
-		// TODO Atelier 1
-		
-		return ret ;
 	}
 
 }

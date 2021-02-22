@@ -15,7 +15,8 @@ public class PawnModel implements PieceModel{
 		super();
 
 		// TODO Atelier 1
-
+		this.coord=coord;
+		this.pieceColor=pieceColor;
 	}
 
 	@Override
